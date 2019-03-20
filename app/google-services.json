@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "345486093387",
+    "firebase_url": "https://parkngo-9fedb.firebaseio.com",
+    "project_id": "parkngo-9fedb",
+    "storage_bucket": "parkngo-9fedb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345486093387:android:6ebcedd083133870",
+        "android_client_info": {
+          "package_name": "com.example.park_n_go"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345486093387-6foftepvobe8fptd593leoonda6tlig6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.park_n_go",
+            "certificate_hash": "5708b27b196dc393b94dc853a8eff5cfe4819bd2"
+          }
+        },
+        {
+          "client_id": "345486093387-rj53skjfl2ajit0d7k3r4ajhdolanfke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTGgrCk2s5eKPujA_L5o9XKjMRzyHmxks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345486093387-rj53skjfl2ajit0d7k3r4ajhdolanfke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
