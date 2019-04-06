@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_et">35sp</dimen>
+    <dimen name="search_et_marginBottom">15sp</dimen>
+    <dimen name="search_btn_width">60sp</dimen>
+</resources>

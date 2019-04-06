@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,32 +11,67 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="match_parent"
         android:background="@drawable/rectangle_with_curved_bottom_borders">
         <!--<ToggleButton -->
             <!--android:id="@+id/toggle_map"-->
             <!--android:>-->
-     </fragment>
-
-    <LinearLayout
-        android:id="@+id/search_container"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-
-        android:orientation="vertical">
-
-
-        <EditText
+        <LinearLayout
+            android:id="@+id/search_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_et"
+            android:orientation="horizontal">
+            <EditText
             android:id="@+id/search_et"
-            android:layout_width="350dp"
-            android:layout_height="300dp"
+            android:layout_width="350sp"
+            android:layout_height="@dimen/search_et"
+            android:textSize="@dimen/font_small"
             android:background="@drawable/rectangle_all_rounded_corners"
-            android:hint="Search"
+            android:hint="@string/search_et"
+            android:textAlignment="textStart"
+            android:layout_marginLeft="5sp"
+            android:layout_marginBottom="@dimen/search_et_marginBottom"
             android:inputType="text"
             android:singleLine="true"
-            android:textAlignment="center"
-            android:layout_marginTop="40dp"
-            android:layout_gravity="center"/>
-    </LinearLayout>
+            />
+            <Button
+                android:id="@+id/search_button"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="@dimen/search_et"
+                android:layout_width="40dp"
+                android:background="@drawable/search_black_circle"
+                android:textColor="@color/white"
+                android:text="Go"
+                />
+        </LinearLayout>
+        </LinearLayout>
+     </fragment>
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/search_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+
+        <!--android:orientation="vertical">-->
+
+
+        <!--<EditText-->
+            <!--android:id="@+id/search_et"-->
+            <!--android:layout_width="350dp"-->
+            <!--android:layout_height="300dp"-->
+            <!--android:background="@drawable/rectangle_all_rounded_corners"-->
+            <!--android:hint="Search"-->
+            <!--android:inputType="text"-->
+            <!--android:singleLine="true"-->
+            <!--android:textAlignment="center"-->
+            <!--android:layout_marginTop="40dp"-->
+            <!--android:layout_gravity="center"/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

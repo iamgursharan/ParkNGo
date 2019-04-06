@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">Park-N-Go</string>
-    <string name="title_activity_maps_home">Map</string>
+    <string name="app_name">Park|Go</string>
+    <string name="title_activity_maps_home">Park\'NGo</string>
+    <!--Dialog box strings-->
+    <string name="title_location_permission">Request Location</string>
+    <string name="text_location_permission">Do you want to share your location</string>
+    <string name="ok">OK</string>
+    <!--end-->
+    <!-- Activity-Map-Layout strings-->
+    <string name="search_et">Search</string>
+    <!-- end -->
+
+
 </resources>
