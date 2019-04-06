@@ -22,6 +22,13 @@
             android:layout_height="match_parent"
             android:gravity="bottom"
             android:orientation="vertical">
+            <ToggleButton
+                android:id="@+id/maps_style_toggle"
+                android:layout_height="@dimen/search_et"
+                android:layout_width="40dp"
+                android:layout_margin="@dimen/search_et_marginBottom"
+                android:layout_gravity="left"
+                />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_et"
@@ -45,7 +52,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_height="@dimen/search_et"
                 android:layout_width="40dp"
-                android:background="@drawable/search_black_circle"
+                android:background="@drawable/circle_black"
                 android:textColor="@color/white"
                 android:text="Go"
                 />
