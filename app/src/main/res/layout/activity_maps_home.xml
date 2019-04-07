@@ -28,10 +28,13 @@
                 android:layout_width="40dp"
                 android:layout_margin="@dimen/search_et_marginBottom"
                 android:layout_gravity="left"
+                android:textColor="@color/white"
+                android:background="@drawable/circle_black"
                 />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/search_et"
+            android:layout_marginBottom="@dimen/search_et_marginBottom"
             android:orientation="horizontal">
             <EditText
             android:id="@+id/search_et"
@@ -40,9 +43,7 @@
             android:textSize="@dimen/font_small"
             android:background="@drawable/rectangle_all_rounded_corners"
             android:hint="@string/search_et"
-            android:textAlignment="textStart"
             android:layout_marginLeft="5sp"
-            android:layout_marginBottom="@dimen/search_et_marginBottom"
             android:inputType="text"
             android:singleLine="true"
             />
@@ -51,9 +52,11 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_height="@dimen/search_et"
-                android:layout_width="40dp"
-                android:background="@drawable/circle_black"
-                android:textColor="@color/white"
+                android:layout_width="45dp"
+                android:background="@drawable/circle_white_with_image"
+                android:textColor="@color/black"
+                android:enabled="false"
+                android:visibility="visible"
                 android:text="Go"
                 />
         </LinearLayout>

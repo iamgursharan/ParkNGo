@@ -2,8 +2,10 @@
 <layer-list
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
+    <solid
+        android:color="@color/white"/>
     <size
         android:width="120dp"
         android:height="120dp"/>
-    <item android:drawable="@drawable/dark_mode"/>
+    <!--<item android:drawable="@drawable/dark_mode"/>-->
 </layer-list>
