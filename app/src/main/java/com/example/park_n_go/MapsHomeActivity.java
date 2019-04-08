@@ -120,8 +120,11 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         searchBtn=(Button) findViewById(R.id.search_button);
-        // Calling styleSearchButton
+        // Calling styleSearchButton method
         styleSearchBtn();
+        // Calling handleToggleButton method
+        handleToggle();
+
         enableMyLocation();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
@@ -162,48 +165,9 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
             }
 
 
+
         });
-//        This functionality is currently deprecated
-        /*
-        final ToggleButton mapsStyleToggleBtn=(ToggleButton)findViewById(R.id.maps_style_toggle);
-        mapsStyleToggleBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    // For loading customized styles for map
-                    try {
-                        boolean success = mMap.setMapStyle(
-                                MapStyleOptions.loadRawResourceStyle(
-                                        getApplicationContext(), R.raw.styles_map_night));
 
-                        if (!success) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Unable to load style file", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    } catch (Resources.NotFoundException e) {
-                        Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                    Drawable whiteCircle= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.circle_white_with_image,null);
-                    mapsStyleToggleBtn.setBackgroundDrawable(whiteCircle);
-                }
-                else{
-                    try {
-                        boolean success = mMap.setMapStyle(
-                                MapStyleOptions.loadRawResourceStyle(
-                                        getApplicationContext(), R.raw.styles_map_standard));
-
-                        if (!success) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "Unable to load style file", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    } catch (Resources.NotFoundException e) {
-                        Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                }
-            }
-        });*/
         // For loading customized styles for map
         try {
             boolean success = mMap.setMapStyle(
@@ -223,6 +187,9 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
 
     }
 
+    /**
+     * Load the map with the markers.
+     */
     private void fillMapWithMarkers(final List<Parking> parkings) throws IOException {
        int count=0;
        searchBtn.setOnClickListener(new View.OnClickListener() {
@@ -251,22 +218,24 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         }
     }
 
+    /**
+     * Reads the data from the firebase.
+     */
     private List<Parking> readData(@NonNull DataSnapshot dataSnapshot)
     {
         List<Parking> parkings=new ArrayList<>();
         for(DataSnapshot snapshot: dataSnapshot.getChildren())
         {
-            Parking parking=snapshot.getValue(Parking.class);
+            for(DataSnapshot sp:snapshot.getChildren()){
+            Parking parking=sp.getValue(Parking.class);
             parkings.add(parking);
+            }
         }
 
         return parkings;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
+
 
     /**
      * Enables the My Location layer if the fine location permission has been granted.
@@ -325,16 +294,17 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         for(Parking parking: parkings){
             if(parking.name.toLowerCase().contains(searchAddress.toLowerCase()))
             {
-               Log.d("Location found",parking.name);
+                Log.d("Location found",parking.name);
                 LatLng positionForCamera=new LatLng(Double.parseDouble(parking.getLatitude()),Double.parseDouble(parking.getLongitude()));
                 CameraPosition camPos = new CameraPosition(positionForCamera, 15, TILT_LEVEL, BEARING_LEVEL);
                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
-                break;
+                return;
             }
 
             else{
                 Toast toast = Toast.makeText(getApplicationContext(), "Could not able to locate", Toast.LENGTH_LONG);
                 toast.show();
+
             }
         }
 
@@ -355,7 +325,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                Drawable whiteCircle= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.circle_white_with_image,null);
                searchBtn.setBackgroundDrawable(whiteCircle);
-               searchBtn.setTextColor(getResources().getColor(R.color.black,null));
+               searchBtn.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.black));
                searchBtn.setEnabled(false);
                searchBtn.setVisibility(View.INVISIBLE);
            }
@@ -364,7 +334,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
            public void onTextChanged(CharSequence s, int start, int before, int count) {
                Drawable blackCircle= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.circle_black,null);
                searchBtn.setBackgroundDrawable(blackCircle);
-               searchBtn.setTextColor(getResources().getColor(R.color.white,null));
+               searchBtn.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.white));
                searchBtn.setEnabled(true);
                searchBtn.setVisibility(View.VISIBLE);
            }
@@ -403,6 +373,56 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         }
     }
 
+    /**
+     * Handles toggle event to style map.
+     *
+     */
+    public void handleToggle(){
+
+        final ToggleButton mapsStyleToggleBtn=(ToggleButton)findViewById(R.id.maps_style_toggle);
+        mapsStyleToggleBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    // For loading customized styles for map
+                    try {
+                        boolean success = mMap.setMapStyle(
+                                MapStyleOptions.loadRawResourceStyle(
+                                        getApplicationContext(), R.raw.styles_map_night));
+
+                        if (!success) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Unable to load style file", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (Resources.NotFoundException e) {
+                        Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+
+                }
+                else{
+                    try {
+                        boolean success = mMap.setMapStyle(
+                                MapStyleOptions.loadRawResourceStyle(
+                                        getApplicationContext(), R.raw.styles_map_standard));
+
+                        if (!success) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "Unable to load style file", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    } catch (Resources.NotFoundException e) {
+                        Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+
+                }
+            }
+        });
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     public void onLocationChanged(Location location) {

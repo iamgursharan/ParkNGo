@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="search_et">35sp</dimen>
-    <dimen name="search_et_marginBottom">15sp</dimen>
+    <dimen name="search_et_marginBottom">30sp</dimen>
     <dimen name="search_btn_width">60sp</dimen>
+    <!-- View parking info dimens-->
+    <dimen name="full_height_parking_info">80sp</dimen>
+    <dimen name="medium_height_parking_info">30sp</dimen>
+    <dimen name="marginTop_parking_info">20sp</dimen>
+    <dimen name="marginLeft_parking_info">5sp</dimen>
 </resources>

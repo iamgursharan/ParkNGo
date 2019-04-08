@@ -8,7 +8,11 @@
     <!--end-->
     <!-- Activity-Map-Layout strings-->
     <string name="search_et">Search</string>
+    <string name="go_search_btn">Go</string>
     <!-- end -->
-
+    <!-- Activity-View-Parking-Info strings-->
+    <string name="address">Address</string>
+    <string name="price">Price</string>
+    <!-- end -->
 
 </resources>

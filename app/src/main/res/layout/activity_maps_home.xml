@@ -26,8 +26,9 @@
                 android:id="@+id/maps_style_toggle"
                 android:layout_height="@dimen/search_et"
                 android:layout_width="40dp"
-                android:layout_margin="@dimen/search_et_marginBottom"
+                android:layout_margin="15sp"
                 android:layout_gravity="left"
+
                 android:textColor="@color/white"
                 android:background="@drawable/circle_black"
                 />
@@ -57,31 +58,11 @@
                 android:textColor="@color/black"
                 android:enabled="false"
                 android:visibility="visible"
-                android:text="Go"
+                android:text="@string/go_search_btn"
                 />
         </LinearLayout>
         </LinearLayout>
      </fragment>
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/search_container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="100dp"-->
-
-        <!--android:orientation="vertical">-->
-
-
-        <!--<EditText-->
-            <!--android:id="@+id/search_et"-->
-            <!--android:layout_width="350dp"-->
-            <!--android:layout_height="300dp"-->
-            <!--android:background="@drawable/rectangle_all_rounded_corners"-->
-            <!--android:hint="Search"-->
-            <!--android:inputType="text"-->
-            <!--android:singleLine="true"-->
-            <!--android:textAlignment="center"-->
-            <!--android:layout_marginTop="40dp"-->
-            <!--android:layout_gravity="center"/>-->
-    <!--</LinearLayout>-->
 
 </LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewParkingInfo">
+
+    <TextView
+        android:id="@+id/parking_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/full_height_parking_info"
+        android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/address"
+            android:hint="@string/address"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info"
+            android:layout_marginRight="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginTop="@dimen/marginTop_parking_info" />
+         <TextView
+             android:id="@+id/price"
+             android:hint="@string/price"
+             android:layout_width="match_parent"
+             android:layout_height="@dimen/medium_height_parking_info"
+             android:layout_marginTop="@dimen/marginTop_parking_info"
+             android:layout_marginLeft="@dimen/marginLeft_parking_info"
+             android:layout_marginRight="@dimen/marginLeft_parking_info"/>
+
+</LinearLayout>
