@@ -4,8 +4,13 @@
     <dimen name="search_et_marginBottom">30sp</dimen>
     <dimen name="search_btn_width">60sp</dimen>
     <!-- View parking info dimens-->
+    <dimen name="large_textsize_parkingname">40sp</dimen>
     <dimen name="full_height_parking_info">80sp</dimen>
     <dimen name="medium_height_parking_info">30sp</dimen>
     <dimen name="marginTop_parking_info">20sp</dimen>
     <dimen name="marginLeft_parking_info">5sp</dimen>
+    <dimen name="marginEnd_parking_info">25sp</dimen>
+    <dimen name="small_width_dataText">80sp</dimen>
+    <dimen name="extra_small_width_dataText">50sp</dimen>
+    <dimen name="large_width_dataText">320sp</dimen>
 </resources>

@@ -9,6 +9,7 @@ package com.example.park_n_go;
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -66,8 +67,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Logger;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
+import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -108,6 +111,9 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
     private LocationManager locationManager;
     private Double shareLatitude;
     private Double shareLongitude;
+    static final String PARK = "com.example.park_n_go";
+    static final String LAT = "com.example.park_n_go_latitude";
+    static final String LONG = "com.example.park_n_go_longitude";
 
 
 
@@ -163,9 +169,6 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 Toast toast = Toast.makeText(getApplicationContext(),"Server error", Toast.LENGTH_LONG);
                 toast.show();
             }
-
-
-
         });
 
         // For loading customized styles for map
@@ -192,6 +195,9 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
      */
     private void fillMapWithMarkers(final List<Parking> parkings) throws IOException {
        int count=0;
+       Gson gson=new Gson();
+       final String jsonParkings=gson.toJson(parkings);
+
        searchBtn.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -202,8 +208,10 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
        if(mMap==null)
             return;
 
-        for(Parking parking:parkings)
-         { count++;
+        for(final Parking parking:parkings)
+         {
+
+             count++;
              final LatLng position = new LatLng(Double.parseDouble(parking.getLatitude()),
                     Double.parseDouble(parking.getLongitude()));//Converting string latlng to LatLng class
                 final String parkingName=parking.getName();
@@ -215,6 +223,20 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 CameraPosition camPos = new CameraPosition(position, ZOOM_LEVEL, TILT_LEVEL, BEARING_LEVEL);
                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
             }
+
+            mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                   Intent intent=new Intent(getApplicationContext(),ViewParkingInfo.class);
+                   intent.putExtra(PARK,jsonParkings);
+                   String latitude=""+marker.getPosition().latitude;
+                    String longitude=""+marker.getPosition().longitude;
+                    intent.putExtra(LAT,latitude);
+                    intent.putExtra(LONG,longitude);
+                   startActivity(intent);
+                   return true;
+                }
+            });
         }
     }
 
@@ -224,12 +246,10 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
     private List<Parking> readData(@NonNull DataSnapshot dataSnapshot)
     {
         List<Parking> parkings=new ArrayList<>();
-        for(DataSnapshot snapshot: dataSnapshot.getChildren())
+        for(DataSnapshot snapshot: dataSnapshot.child("parkingcollection").getChildren())
         {
-            for(DataSnapshot sp:snapshot.getChildren()){
-            Parking parking=sp.getValue(Parking.class);
+            Parking parking=snapshot.getValue(Parking.class);
             parkings.add(parking);
-            }
         }
 
         return parkings;
@@ -298,24 +318,16 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 LatLng positionForCamera=new LatLng(Double.parseDouble(parking.getLatitude()),Double.parseDouble(parking.getLongitude()));
                 CameraPosition camPos = new CameraPosition(positionForCamera, 15, TILT_LEVEL, BEARING_LEVEL);
                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
-                return;
+                break;
             }
-
-            else{
+            else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Could not able to locate", Toast.LENGTH_LONG);
                 toast.show();
-
             }
-        }
+            }
 
     }
 
-    // This method moves the camera based on the location found
-    public void moveCamera(GoogleMap mMap,LatLng position){
-
-//        CameraPosition camPos = new CameraPosition(position, ZOOM_LEVEL, TILT_LEVEL, BEARING_LEVEL);
-//        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
-    }
 
     //This method styles the search button
     public void styleSearchBtn(){
@@ -345,16 +357,6 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
            }
        });
     }
-
-
-
-    public void showToast(String message)
-    {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-    }
-
-
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

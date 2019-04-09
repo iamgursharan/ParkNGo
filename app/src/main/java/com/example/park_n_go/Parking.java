@@ -4,17 +4,23 @@
  */
 package com.example.park_n_go;
 
+import android.os.Parcelable;
 import android.text.format.Time;
+
+import java.io.Serializable;
 
 public class Parking {
 
     // private variables
     public String address;
+    public String hostType;
     public String id;
     public String latitude;
     public String longitude;
     public String name;
     public String notes;
+    public String occupancy;
+    public String occupied;
     public String price;
     public String time;
 
@@ -66,6 +72,22 @@ public class Parking {
         this.notes = notes;
     }
 
+    public String getOccupancy() {
+        return occupancy;
+    }
+
+    public void setOccupancy(String occupancy) {
+        this.occupancy = occupancy;
+    }
+
+    public String getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(String occupied) {
+        this.occupied = occupied;
+    }
+
     public String getPrice() {
         return price;
     }
@@ -81,17 +103,28 @@ public class Parking {
     public void setTime(String time) {
         this.time = time;
     }
+    public String getHostType() {
+        return hostType;
+    }
+
+    public void setHostType(String hostType) {
+        this.hostType = hostType;
+    }
 
     public Parking() {
     }
 
-    public Parking(String address, String id, String latitude, String longitude, String name, String notes, String price, String time) {
+    public Parking(String address,String hostType,
+                   String id, String latitude, String longitude, String name, String notes, String occupancy, String occupied, String price, String time) {
         this.address = address;
+        this.hostType=hostType;
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
         this.name = name;
         this.notes = notes;
+        this.occupancy = occupancy;
+        this.occupied = occupied;
         this.price = price;
         this.time = time;
     }
@@ -105,6 +138,8 @@ public class Parking {
                 ", longitude='" + longitude + '\'' +
                 ", name='" + name + '\'' +
                 ", notes='" + notes + '\'' +
+                ", occupancy='" + occupancy + '\'' +
+                ", occupied='" + occupied + '\'' +
                 ", price='" + price + '\'' +
                 ", time='" + time + '\'' +
                 '}';

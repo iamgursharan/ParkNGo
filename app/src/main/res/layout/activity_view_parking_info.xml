@@ -5,30 +5,152 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/gray"
     tools:context=".ViewParkingInfo">
 
     <TextView
         android:id="@+id/parking_name"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:textSize="@dimen/large_textsize_parkingname"
+        android:fontFamily="cursive"
         android:layout_height="@dimen/full_height_parking_info"
         android:textAlignment="center" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info"
+        android:layout_marginRight="@dimen/marginLeft_parking_info">
+        <TextView
+            android:text="@string/address"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:textStyle="bold"
+            />
         <TextView
             android:id="@+id/address"
+            android:layout_gravity="center"
             android:hint="@string/address"
             android:layout_height="@dimen/medium_height_parking_info"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="@dimen/marginLeft_parking_info"
-            android:layout_marginRight="@dimen/marginLeft_parking_info"
+            android:layout_width="@dimen/large_width_dataText"
+            android:textAlignment="center"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
             android:background="@drawable/rectangle_all_rounded_corners"
-            android:layout_marginTop="@dimen/marginTop_parking_info" />
-         <TextView
-             android:id="@+id/price"
-             android:hint="@string/price"
-             android:layout_width="match_parent"
-             android:layout_height="@dimen/medium_height_parking_info"
-             android:layout_marginTop="@dimen/marginTop_parking_info"
-             android:layout_marginLeft="@dimen/marginLeft_parking_info"
-             android:layout_marginRight="@dimen/marginLeft_parking_info"/>
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info"
+        android:layout_marginRight="@dimen/marginLeft_parking_info">
+        <TextView
+            android:text="@string/price"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/price"
+            android:hint="@string/price"
+            android:textAlignment="center"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/large_width_dataText"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info"
+        android:layout_marginRight="@dimen/marginLeft_parking_info">
+        <TextView
+            android:text="@string/time"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/time"
+            android:hint="@string/time"
+            android:textAlignment="center"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/large_width_dataText"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info"
+        android:layout_marginRight="@dimen/marginLeft_parking_info">
+        <TextView
+            android:text="@string/hostType"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/hostType"
+            android:hint="@string/hostType"
+            android:textAlignment="center"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/large_width_dataText"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/marginTop_parking_info"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info"
+        android:layout_marginRight="@dimen/marginLeft_parking_info">
+        <TextView
+            android:text="@string/occupancy"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/occupancy"
+            android:hint="@string/occupancy"
+            android:textAlignment="center"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+        <TextView
+            android:text="@string/occupied"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/marginEnd_parking_info"
+            />
+        <TextView
+            android:id="@+id/occupied"
+            android:hint="@string/occupied"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/small_width_dataText"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    </LinearLayout>
+
 
 </LinearLayout>

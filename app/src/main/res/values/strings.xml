@@ -13,6 +13,10 @@
     <!-- Activity-View-Parking-Info strings-->
     <string name="address">Address</string>
     <string name="price">Price</string>
+    <string name="time">Time</string>
+    <string name="hostType">Host Type</string>
+    <string name="occupancy">Occupancy</string>
+    <string name="occupied">Occupied</string>
     <!-- end -->
 
 </resources>
