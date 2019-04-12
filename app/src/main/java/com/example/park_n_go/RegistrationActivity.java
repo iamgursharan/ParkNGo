@@ -106,7 +106,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             });
 
                             // Staring login activity
-                            Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(RegistrationActivity.this, SignInActivity.class);
                             startActivity(intent);
                         }
                         else {

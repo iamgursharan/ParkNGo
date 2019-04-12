@@ -38,6 +38,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -114,6 +115,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
     static final String PARK = "com.example.park_n_go";
     static final String LAT = "com.example.park_n_go_latitude";
     static final String LONG = "com.example.park_n_go_longitude";
+    private ImageButton accountBtn;
 
 
 
@@ -126,6 +128,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         searchBtn=(Button) findViewById(R.id.search_button);
+        accountBtn=findViewById(R.id.account);
         // Calling styleSearchButton method
         styleSearchBtn();
         // Calling handleToggleButton method
@@ -322,7 +325,8 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
                 break;
             }
-            else {
+            if(!(parking.name.toLowerCase().contains(searchAddress.toLowerCase())))
+            {
                 Toast toast = Toast.makeText(getApplicationContext(), "Could not able to locate", Toast.LENGTH_LONG);
                 toast.show();
             }
@@ -337,7 +341,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
        searchET.addTextChangedListener(new TextWatcher() {
            @Override
            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-               Drawable whiteCircle= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.circle_white_with_image,null);
+               Drawable whiteCircle= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.circle_white,null);
                searchBtn.setBackgroundDrawable(whiteCircle);
                searchBtn.setTextColor(ContextCompat.getColor(getApplicationContext(),R.color.black));
                searchBtn.setEnabled(false);
@@ -403,8 +407,11 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                         toast.show();
                     }
 
+                    Drawable account_white= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.account_white,null);
+                    accountBtn.setBackgroundDrawable(account_white);
+
                 }
-                else{
+                if(!isChecked){
                     try {
                         boolean success = mMap.setMapStyle(
                                 MapStyleOptions.loadRawResourceStyle(
@@ -418,6 +425,8 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                         Toast toast = Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG);
                         toast.show();
                     }
+                    Drawable account_black= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.account_black,null);
+                    accountBtn.setBackgroundDrawable(account_black);
 
                 }
             }

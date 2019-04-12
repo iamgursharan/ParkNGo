@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="account_icon_margin">50sp</dimen>
     <dimen name="search_et">35sp</dimen>
     <dimen name="search_et_marginBottom">30sp</dimen>
     <dimen name="search_btn_width">60sp</dimen>
