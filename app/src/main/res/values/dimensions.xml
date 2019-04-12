@@ -13,4 +13,7 @@
     <dimen name="small_width_dataText">80sp</dimen>
     <dimen name="extra_small_width_dataText">50sp</dimen>
     <dimen name="large_width_dataText">320sp</dimen>
+    <!-- Login activity dimens -->
+    <dimen name="header_activity_margin">60sp</dimen>
+    <dimen name="header_activity_fontsize">80sp</dimen>
 </resources>

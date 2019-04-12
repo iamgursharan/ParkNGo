@@ -9,6 +9,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import java.util.List;
 public class ViewParkingInfo extends AppCompatActivity {
 
     private static List<Parking> list;
+    private Button hold,back;
 
 
     @Override
@@ -61,10 +64,27 @@ public class ViewParkingInfo extends AppCompatActivity {
               hostType.setText(p.getHostType());
               occupancy.setText(p.getOccupancy());
               occupied.setText(p.getOccupied());
-
+              Log.d("name",p.getName());
            }
 
        }
+       hold=findViewById(R.id.hold_btn);
+       back=findViewById(R.id.back_btn);
+       hold.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Toast.makeText(getApplicationContext(),"Hold successful",Toast.LENGTH_LONG).show();
+           }
+       });
+       back.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent=new Intent(ViewParkingInfo.this,MapsHomeActivity.class);
+               startActivity(intent);
+           }
+       });
+
     }
+
 
 }

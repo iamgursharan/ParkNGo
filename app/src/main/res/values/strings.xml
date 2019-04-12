@@ -17,6 +17,19 @@
     <string name="hostType">Host Type</string>
     <string name="occupancy">Occupancy</string>
     <string name="occupied">Occupied</string>
+    <string name="hold">Hold</string>
+    <string name="pay_now">Pay Now</string>
+    <string name="back">back</string>
+    <!-- end -->
+    <!-- Activity-Login strings-->
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="role">Role</string>
+    <string name="driver">Driver</string>
+    <string name="host">Host</string>
+    <string name="name">Name</string>
     <!-- end -->
 
 </resources>

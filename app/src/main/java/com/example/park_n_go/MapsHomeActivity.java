@@ -230,10 +230,12 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                    Intent intent=new Intent(getApplicationContext(),ViewParkingInfo.class);
                    intent.putExtra(PARK,jsonParkings);
                    String latitude=""+marker.getPosition().latitude;
-                    String longitude=""+marker.getPosition().longitude;
-                    intent.putExtra(LAT,latitude);
-                    intent.putExtra(LONG,longitude);
+                   String longitude=""+marker.getPosition().longitude;
+                   intent.putExtra(LAT,latitude);
+                   intent.putExtra(LONG,longitude);
                    startActivity(intent);
+                   Log.d("Latitude",latitude);
+                   Log.d("Longitude",longitude);
                    return true;
                 }
             });
