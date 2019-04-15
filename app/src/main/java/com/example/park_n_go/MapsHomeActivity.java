@@ -133,10 +133,18 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         styleSearchBtn();
         // Calling handleToggleButton method
         handleToggle();
+        accountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MapsHomeActivity.this,HostDashboard.class);
+                startActivity(intent);
+            }
+        });
 
         enableMyLocation();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
+
 
    }
 
@@ -146,7 +154,6 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
@@ -293,23 +300,6 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
 
     }
 
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-//
-//
-//        if (requestCode == MY_LOCATION_REQUEST_CODE) {
-//            if (permissions.length == 1 &&
-//                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
-//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Toast toast = Toast.makeText(getApplicationContext(), "Location shared", Toast.LENGTH_LONG);
-//                toast.show();
-//            } else {
-//                Toast toast = Toast.makeText(getApplicationContext(), "Enter address in the search text box", Toast.LENGTH_LONG);
-//                toast.show();
-//            }
-//        }
-//    }
-    // location permission region ends
 
 //    This method search the address entered by the user
     private void search(List<Parking> parkings)
@@ -317,7 +307,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         EditText searchET=findViewById(R.id.search_et);
         searchAddress=searchET.getText().toString();
         for(Parking parking: parkings){
-            if(parking.name.toLowerCase().contains(searchAddress.toLowerCase()))
+            if(parking.name.toLowerCase().equals(searchAddress.toLowerCase())||(parking.name.toLowerCase().contains(searchAddress.toLowerCase())))
             {
                 Log.d("Location found",parking.name);
                 LatLng positionForCamera=new LatLng(Double.parseDouble(parking.getLatitude()),Double.parseDouble(parking.getLongitude()));
@@ -325,7 +315,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(camPos));
                 break;
             }
-            if(!(parking.name.toLowerCase().contains(searchAddress.toLowerCase())))
+            else
             {
                 Toast toast = Toast.makeText(getApplicationContext(), "Could not able to locate", Toast.LENGTH_LONG);
                 toast.show();

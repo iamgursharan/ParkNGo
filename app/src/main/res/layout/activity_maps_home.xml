@@ -62,7 +62,7 @@
                 android:id="@+id/search_button"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="@dimen/search_et"
+                android:layout_height="wrap_content"
                 android:layout_width="45dp"
                 android:background="@drawable/circle_white"
                 android:textColor="@color/black"

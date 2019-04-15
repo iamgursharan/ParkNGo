@@ -23,6 +23,8 @@ public class Parking {
     public String occupied;
     public String price;
     public String time;
+    private String hostEmail;
+
 
     public String getAddress() {
         return address;
@@ -111,13 +113,23 @@ public class Parking {
         this.hostType = hostType;
     }
 
+    public String getHostEmail() {
+        return hostEmail;
+    }
+
+    public void setHostEmail(String hostEmail) {
+        this.hostEmail = hostEmail;
+    }
+
     public Parking() {
     }
 
-    public Parking(String address,String hostType,
-                   String id, String latitude, String longitude, String name, String notes, String occupancy, String occupied, String price, String time) {
+    public Parking(String address,String hostType,String hostEmail,
+                   String id, String latitude, String longitude, String name,
+                   String notes, String occupancy, String occupied, String price, String time) {
         this.address = address;
         this.hostType=hostType;
+        this.hostEmail=hostEmail;
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -142,6 +154,7 @@ public class Parking {
                 ", occupied='" + occupied + '\'' +
                 ", price='" + price + '\'' +
                 ", time='" + time + '\'' +
+                ", hostEmail='" + hostEmail + '\'' +
                 '}';
     }
 }

@@ -78,9 +78,9 @@ public class RegistrationActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
 
-
+                             String uid=mAuth.getUid();
                              String role="";
-                             String userId=databaseRef.child("user").getKey();
+                             String userId=databaseRef.child(uid).getKey();
 
                             // Saving values in database
                             if(roleDriver.isChecked()){
@@ -92,7 +92,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             }
 
-                            databaseRef.child("users").child(userId).setValue(new User(name,role,email,password)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            databaseRef.child("users").child(userId).setValue(new User(name,role,email,password,userId)).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d("Writing data","Success");

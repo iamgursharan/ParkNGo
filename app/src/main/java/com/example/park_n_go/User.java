@@ -6,6 +6,7 @@ public class User {
     private String role;
     private String email;
     private String password;
+    private String id;
 
     // Getter and setters
 
@@ -42,14 +43,23 @@ public class User {
         this.password = password;
     }
 
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     // Constructors
     public User(){}
 
-    public User(String name, String role, String email, String password) {
+    public User(String name, String role, String email, String password, String id) {
         this.name = name;
         this.role = role;
         this.email = email;
         this.password = password;
+        this.id=id;
     }
 
     @Override
@@ -59,6 +69,7 @@ public class User {
                 ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", id='" + id + '\''+
                 '}';
     }
 }
