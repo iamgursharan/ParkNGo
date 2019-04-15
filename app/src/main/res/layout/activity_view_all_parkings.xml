@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_vertical"
     android:background="@color/gray"
-    tools:context=".EditParking">
+    tools:context=".ViewAllParkings">
 
     <EditText
-        android:id="@+id/parking_name"
+        android:id="@+id/parking_name_et"
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/marginTop_parking_info"
         android:textSize="@dimen/large_textsize_parkingname"
-        android:fontFamily="cursive"
         android:enabled="false"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -33,7 +33,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/address"
+            android:id="@+id/address_et"
             android:layout_gravity="center"
             android:hint="@string/address"
             android:layout_height="@dimen/medium_height_parking_info"
@@ -58,7 +58,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/price"
+            android:id="@+id/price_et"
             android:hint="@string/price"
             android:textAlignment="center"
             android:enabled="false"
@@ -83,7 +83,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/time"
+            android:id="@+id/time_et"
             android:hint="@string/time"
             android:textAlignment="center"
             android:enabled="false"
@@ -107,7 +107,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/hostType"
+            android:id="@+id/hostType_et"
             android:hint="@string/hostType"
             android:textAlignment="center"
             android:enabled="false"
@@ -131,7 +131,7 @@
             android:textStyle="bold"
             />
         <EditText
-            android:id="@+id/occupancy"
+            android:id="@+id/occupancy_et"
             android:hint="@string/occupancy"
             android:textAlignment="center"
             android:enabled="false"
@@ -149,7 +149,7 @@
             android:layout_marginLeft="@dimen/marginEnd_parking_info"
             />
         <EditText
-            android:id="@+id/occupied"
+            android:id="@+id/occupied_et"
             android:hint="@string/occupied"
             android:gravity="center"
             android:textAlignment="center"

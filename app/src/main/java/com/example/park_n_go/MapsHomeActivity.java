@@ -61,6 +61,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -85,6 +86,7 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
 
     // field variables
     private GoogleMap mMap;
+    private FirebaseAuth mAuth;
     private static FirebaseDatabase database;
     private static DatabaseReference databaseRef;
 
@@ -133,6 +135,36 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
         styleSearchBtn();
         // Calling handleToggleButton method
         handleToggle();
+
+
+        enableMyLocation();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
+
+        // enable account button if the user is host
+        mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databaseRef=database.getReference();
+
+        databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot:dataSnapshot.child("users").getChildren()){
+                    for(DataSnapshot sp:snapshot.getChildren()){
+
+                        if(sp.getValue().equals("Host")){
+                            accountBtn.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         accountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,10 +172,6 @@ public class MapsHomeActivity extends  AppCompatActivity implements OnMapReadyCa
                 startActivity(intent);
             }
         });
-
-        enableMyLocation();
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, (LocationListener) this);
 
 
    }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@color/gray"
+    tools:context=".ViewUser">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_margin="50sp"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/user_nameET"
+            android:layout_gravity="center"
+            android:hint="@string/address"
+            android:layout_height="@dimen/medium_height_parking_info"
+            android:layout_width="@dimen/large_width_dataText"
+            android:textAlignment="center"
+            android:enabled="false"
+            android:layout_marginTop="10sp"
+            android:layout_marginStart="@dimen/marginLeft_parking_info"
+            android:background="@drawable/rectangle_all_rounded_corners"
+            android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    <EditText
+        android:id="@+id/user_email_et"
+        android:layout_gravity="center"
+        android:hint="@string/address"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:layout_width="@dimen/large_width_dataText"
+        android:textAlignment="center"
+        android:enabled="false"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="@dimen/marginLeft_parking_info"
+        android:background="@drawable/rectangle_all_rounded_corners"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    <EditText
+        android:id="@+id/user_role_et"
+        android:layout_gravity="center"
+        android:hint="@string/address"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:layout_width="@dimen/large_width_dataText"
+        android:textAlignment="center"
+        android:enabled="false"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="@dimen/marginLeft_parking_info"
+        android:background="@drawable/rectangle_all_rounded_corners"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+    <EditText
+        android:id="@+id/user_pwd_et"
+        android:layout_gravity="center"
+        android:hint="@string/address"
+        android:layout_height="@dimen/medium_height_parking_info"
+        android:layout_width="@dimen/large_width_dataText"
+        android:textAlignment="center"
+        android:enabled="false"
+        android:layout_marginTop="10sp"
+        android:layout_marginStart="@dimen/marginLeft_parking_info"
+        android:background="@drawable/rectangle_all_rounded_corners"
+        android:layout_marginLeft="@dimen/marginLeft_parking_info" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/delete_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/delete_button"
+            android:text="@string/delete"
+            android:layout_margin="5sp"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_roundedcorners_black"
+            android:text="@string/edit"
+            android:layout_margin="5sp"
+            android:textColor="@color/white" />
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_roundedcorners_black"
+            android:text="@string/submit"
+            android:layout_margin="5sp"
+            android:enabled="false"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+
+</LinearLayout>

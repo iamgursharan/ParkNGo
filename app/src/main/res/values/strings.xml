@@ -43,4 +43,7 @@
     <!-- Activity-edit-parking strings-->
     <string name="delete">Delete</string>
     <!--end-->
+    <!-- Activity-admin-dashboard strings-->
+    <string name="manage_users">Users</string>
+    <string name="manage_parkings">Parkings</string>
 </resources>

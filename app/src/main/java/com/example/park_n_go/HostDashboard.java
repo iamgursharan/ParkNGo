@@ -46,7 +46,11 @@ public class HostDashboard extends AppCompatActivity {
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                getParkingNames(retrieveData(dataSnapshot));
+
+                //Populating listview
+                ArrayAdapter adapter=new ArrayAdapter<String>(getApplicationContext(),android.R.layout.simple_list_item_1,getParkingNames(retrieveData(dataSnapshot)));
+                listView.setAdapter(adapter);
+                updateMessage(getParkingNames(retrieveData(dataSnapshot)));
             }
 
             @Override
@@ -57,9 +61,7 @@ public class HostDashboard extends AppCompatActivity {
 
 
 
-        //Populating listview
-        ArrayAdapter adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,parkingNames);
-        listView.setAdapter(adapter);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -72,7 +74,7 @@ public class HostDashboard extends AppCompatActivity {
         });
 
         //Calling updateMessage if there is no data
-  //      updateMessage();
+//        updateMessage();
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,34 +96,33 @@ public class HostDashboard extends AppCompatActivity {
 
     }
 
-    private void getParkingNames(@NonNull List<Parking> data){
+    private List getParkingNames(@NonNull List<Parking> data){
 
+        List nameData=new ArrayList();
         String hostEmail=mAuth.getCurrentUser().getEmail();
 
         for(Parking p:data){
            if(p.getHostEmail().equals(hostEmail)){
-Log.d("Name",p.getName());
-               parkingNames.add(p.getName());
+
+               nameData.add(p.getName());
            }
 
         }
+        return nameData;
      }
 
 
 
 
 
-//    // This method updates the message
-//    private void updateMessage(){
-//        if(parkingNames.isEmpty()){
-//           message.setVisibility(View.VISIBLE);
-//           listView.setVisibility(View.INVISIBLE);
-//        }
-//        else{
-//            message.setVisibility(View.INVISIBLE);
-//        }
-//
-//    }
+    // This method updates the message
+    private void updateMessage(List data){
+        if(data.isEmpty()){
+           message.setVisibility(View.VISIBLE);
+           listView.setVisibility(View.INVISIBLE);
+        }
+
+    }
 
     // Instantiating all the widgets
     private void instantiateUIComponents(){

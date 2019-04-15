@@ -43,7 +43,7 @@ public class SignInActivity extends AppCompatActivity {
     private void loginUserAccount() {
         progressBar.setVisibility(View.VISIBLE);
 
-        String email, password;
+        final String email, password;
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
 
@@ -65,9 +65,17 @@ public class SignInActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
 
+                            if(email.equals("admin@parkgo.com")){
+                                Intent intent = new Intent(SignInActivity.this, AdminDashboardActivity.class);
+                                startActivity(intent);
+                            }
+
+                            else{
+
                             // Starting another activity
                             Intent intent = new Intent(SignInActivity.this, MapsHomeActivity.class);
                             startActivity(intent);
+                            }
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();

@@ -5,9 +5,11 @@ package com.example.park_n_go;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +41,7 @@ public class EditParking extends AppCompatActivity {
     private static FirebaseDatabase database;
     private static DatabaseReference databaseRef;
     private List<Parking> parkingData;
-    private String dataKey;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,9 +78,10 @@ public class EditParking extends AppCompatActivity {
 
                                 if(sp.getValue().equals(mAuth.getCurrentUser().getEmail())){
                                    String key= snapshot.getKey();
-//                                   Rendering into console
-//                                   Log.d("key",key);
                                    writeData(key);
+                                   Intent intent=new Intent(EditParking.this,HostDashboard.class);
+                                   startActivity(intent);
+                                   finish();
                                 }
                             }
                         }
@@ -95,7 +98,27 @@ public class EditParking extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databaseRef.child("parkingcollection").child(dataKey).setValue(null);
+                databaseRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot:dataSnapshot.child("parkingcollection").getChildren()){
+                            for(DataSnapshot sp:snapshot.getChildren()){
+
+                                if(sp.getValue().equals(mAuth.getCurrentUser().getEmail())){
+                                    String key= snapshot.getKey();
+                                    databaseRef.child("parkingcollection").child(key).removeValue();
+                                    Intent intent=new Intent(EditParking.this,HostDashboard.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }
+                        }
+                    }@Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
             }
         });
 
@@ -166,6 +189,10 @@ public class EditParking extends AppCompatActivity {
         hostTypeET.setEnabled(true);
         occupiedET.setEnabled(true);
         occupancyET.setEnabled(true);
+
+        submitBtn.setEnabled(true);
+        Drawable submitBackground= ResourcesCompat.getDrawable(getApplicationContext().getResources(),R.drawable.submit_button,null);
+        submitBtn.setBackgroundDrawable(submitBackground);
     }
 
     public void writeData(String key){
@@ -225,6 +252,7 @@ public class EditParking extends AppCompatActivity {
 
         return p1;
     }
+
 
 
 }

@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".EditParking"></activity>
+        <activity android:name=".ViewAllParkings"></activity>
+        <activity android:name=".ManageParkings" />
+        <activity android:name=".ViewUser" />
+        <activity android:name=".ManageUsers" />
+        <activity android:name=".AdminDashboardActivity" />
+        <activity android:name=".EditParking" />
         <activity android:name=".AddParking" />
         <activity android:name=".HostDashboard">
 

@@ -19,4 +19,9 @@
     <dimen name="header_activity_fontsize">80sp</dimen>
     <!-- Host dashboard activity dimens -->
     <dimen name="host_header_fontsize">40sp</dimen>
+    <!-- Admin dashboard activity dimens -->
+    <dimen name="image_button_margin">15sp</dimen>
+    <dimen name="texview_margin">45sp</dimen>
+    <dimen name="subheader1">30sp</dimen>
+    <dimen name="subheader2">15sp</dimen>
 </resources>
