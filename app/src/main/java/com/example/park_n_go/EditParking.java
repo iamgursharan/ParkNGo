@@ -229,7 +229,7 @@ public class EditParking extends AppCompatActivity {
     }
 
     // This method generates latitude and longitude taking address and context as an input-context(Context),strAddress(String)
-    public LatLng getLocationFromAddress(Context context, String strAddress) {
+    public static LatLng getLocationFromAddress(Context context, String strAddress) {
 
         Geocoder coder = new Geocoder(context);
         List<Address> address;

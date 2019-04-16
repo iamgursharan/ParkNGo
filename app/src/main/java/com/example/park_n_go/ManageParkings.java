@@ -79,7 +79,7 @@ public class ManageParkings extends AppCompatActivity {
 
     }
 
-    private List getNames(List<Parking> data){
+    public static List getNames(List<Parking> data){
         List parkingData=new ArrayList();
         for(Parking parking:data){
             parkingData.add(parking.getName());

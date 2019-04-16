@@ -101,7 +101,7 @@ public class ManageUsers extends AppCompatActivity {
         return userData;
     }
 
-    public String[] getObject(List<User> data,String name){
+    public static String[] getObject(List<User> data,String name){
         String[] result=new String[4];
         for(User user:data){
             if(user.getName().equals(name)){
