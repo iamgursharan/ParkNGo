@@ -16,3 +16,5 @@ This is a real time android application for locating parking respective of the u
 <img src="app/src/main/res/raw/screenshots/Dashboard-Admin.png?raw=true" width="40%">
 
 <img src="app/src/main/res/raw/screenshots/Edit-Admin.png?raw=true" width="40%">
+
+###Stay tuned for future upgrades
