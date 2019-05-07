@@ -1,6 +1,6 @@
 # ParkNGo
 This is a real time android application for locating parking respective of the user location or a search made by a user
-/s/s
+
 ## Login Screen
 <img src="app/src/main/res/raw/screenshots/Login.png?raw=true" width="40%">
 
@@ -17,5 +17,5 @@ This is a real time android application for locating parking respective of the u
 
 <img src="app/src/main/res/raw/screenshots/Edit-Admin.png?raw=true" width="40%">
 
----------------------------------------------------------------------------------
+---------------------------------------------------------------------------------/s
 ## Stay tuned for future upgrades......
